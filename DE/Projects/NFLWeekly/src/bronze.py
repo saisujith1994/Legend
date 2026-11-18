@@ -30,11 +30,16 @@ def extract_data(url:str)-> pd.DataFrame:
 
 def main():
     # Extract data from the URLs
+    print("Extracting data from URLs...")
     players = extract_data(PLAYER_URL)
     games = extract_data(GAMES_URL)
 
     games['gameday']= pd.to_datetime(games['gameday'], format='%Y-%m-%d')
     # Save the extracted data to CSV files in the data directory
-    players.to_csv(DATA_DIR / "players.csv", index=False)
-    games.to_csv(DATA_DIR / "games.csv", index=False)
+    print("Saving data to data directory...")
+    players.to_csv("../data/bronze/players.csv", index=False)
+    games.to_csv("../data/bronze/games.csv", index=False)
+
+if __name__ == "__main__":
+    main()
 
